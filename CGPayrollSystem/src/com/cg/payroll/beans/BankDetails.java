@@ -68,8 +68,10 @@ public class BankDetails {
 
 	@Override
 	public String toString() {
-		return "\nAccount Number = " + accountNumber + "\nBank Name = " + bankName + "\nIfsc Code = " + ifscCode
-				;
+		return "BankDetails [accountNumber=" + accountNumber + ", bankName=" + bankName + ", ifscCode=" + ifscCode
+				+ ", getAccountNumber()=" + getAccountNumber() + ", getBankName()=" + getBankName() + ", getIfscCode()="
+				+ getIfscCode() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
 	}	
 	
 	

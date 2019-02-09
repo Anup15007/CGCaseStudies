@@ -7,11 +7,19 @@ import com.cg.payroll.beans.BankDetails;
 import com.cg.payroll.beans.Salary;
 import com.cg.payroll.daoservices.AssociateDAO;
 import com.cg.payroll.daoservices.AssociateDAOImpl;
-import com.cg.payroll.exceptions.AssociateDetailsNotfoundException;
+import com.cg.payroll.exceptions.AssociateDetailsNotFoundException;
 
 public class PayrollServicesImpl implements PayrollServices{
 
-	private AssociateDAO associateDao = new AssociateDAOImpl();
+	private AssociateDAO associateDao;
+	
+	public PayrollServicesImpl() {
+		associateDao=new AssociateDAOImpl();
+	}
+	
+	public PayrollServicesImpl(AssociateDAO associateDao) {
+		this.associateDao=associateDao;
+	}
 	
 	@Override
 	public int acceptAssociateDetails(String firstName, String lastName, String emailId, String department,
@@ -29,11 +37,11 @@ public class PayrollServicesImpl implements PayrollServices{
 	}
 
 	@Override
-	public int calculateNetSalary(int associateId) throws AssociateDetailsNotfoundException {
+	public int calculateNetSalary(int associateId) throws AssociateDetailsNotFoundException {
 		Associate associate = getAssociateDetails(associateId);
 		int netSalary=0,grossSalary=0,monthlyTax=0,YearlyTax=0;
 		associate.getSalary().setHra((int)((associate.getSalary().getBasicSalary())*0.3));
-		associate.getSalary().setConveyenceAllowance((int)((associate.getSalary().getBasicSalary())*0.3));
+		associate.getSalary().setCompanyPf((int)((associate.getSalary().getBasicSalary())*0.3));
 		associate.getSalary().setPersonalAllowance((int)((associate.getSalary().getBasicSalary())*0.25));
 		associate.getSalary().setOtherAllowance((int)((associate.getSalary().getBasicSalary())*0.2));
 		grossSalary = associate.getSalary().getBasicSalary()+associate.getSalary().getHra()+associate.getSalary().getCompanyPf()+associate.getSalary().getPersonalAllowance()+associate.getSalary().getOtherAllowance();
@@ -72,19 +80,17 @@ public class PayrollServicesImpl implements PayrollServices{
 			}else
 				monthlyTax= 0;
 		}
-		System.out.println("Yearly Investment = "+investment);
+			
 		netSalary = grossSalary-associate.getSalary().getCompanyPf()-associate.getSalary().getEpf();
-		associate.getSalary().setGrossSalary(grossSalary);
-		associate.getSalary().setNetSalary(netSalary);
-		associate.getSalary().setMonthlyTax(monthlyTax);
+		
 		return netSalary;
 	}
 
 	@Override
-	public Associate getAssociateDetails(int associateId) throws AssociateDetailsNotfoundException {
+	public Associate getAssociateDetails(int associateId) throws AssociateDetailsNotFoundException {
 		Associate associate = associateDao.findOne(associateId);
 		if(associate==null)
-			throw new AssociateDetailsNotfoundException("Associate details not found for id = "+associateId);
+			throw new AssociateDetailsNotFoundException("Associate details not found for id = "+associateId);
 		
 		return associate;
 	}

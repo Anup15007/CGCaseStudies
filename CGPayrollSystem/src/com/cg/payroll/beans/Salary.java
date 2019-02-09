@@ -141,9 +141,14 @@ public class Salary {
 
 	@Override
 	public String toString() {
-		return "\nBasic Salary = " + basicSalary + "\nHRA = " + hra + "\nConveyence Allowance = " + conveyenceAllowance
-				+ "\nOther Allowance = " + otherAllowance + "\nPersonal Allowance = " + personalAllowance + "\nMonthly Tax = "
-				+ monthlyTax + "\nEPF = " + epf + "\nCompanyPF=" + companyPf + "\nGross Salary=" + grossSalary
-				+ "\nNet Salary=" + netSalary;
+		return "Salary [basicSalary=" + basicSalary + ", hra=" + hra + ", conveyenceAllowance=" + conveyenceAllowance
+				+ ", otherAllowance=" + otherAllowance + ", personalAllowance=" + personalAllowance + ", monthlyTax="
+				+ monthlyTax + ", epf=" + epf + ", companyPf=" + companyPf + ", grossSalary=" + grossSalary
+				+ ", netSalary=" + netSalary + ", getBasicSalary()=" + getBasicSalary() + ", getHra()=" + getHra()
+				+ ", getConveyenceAllowance()=" + getConveyenceAllowance() + ", getOtherAllowance()="
+				+ getOtherAllowance() + ", getPersonalAllowance()=" + getPersonalAllowance() + ", getMonthlyTax()="
+				+ getMonthlyTax() + ", getEpf()=" + getEpf() + ", getCompanyPf()=" + getCompanyPf()
+				+ ", getGrossSalary()=" + getGrossSalary() + ", getNetSalary()=" + getNetSalary() + ", hashCode()="
+				+ hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
 	}	
 }

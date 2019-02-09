@@ -177,10 +177,14 @@ public class Associate {
 
 	@Override
 	public String toString() {
-		return "*************************Associate Details******************************"
-				+ "\nAssociate Id = " + associateId + "\nYearly Investment Under 80C = " + yearlyInvestmentUnder80C
-				+ "\nFirst Name = " + firstName + "\nLast Name = " + lastName + "\nDepartment = " + department
-				+ "\nDesignation = " + designation + "\nPancard = " + pancard + "\nEmailId = " + emailId + "\n*************************Salary******************************"
-				+ salary + "\n*************************Bank Details******************************" + bankDetails ;
+		return "Associate [associateId=" + associateId + ", yearlyInvestmentUnder80C=" + yearlyInvestmentUnder80C
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", department=" + department
+				+ ", designation=" + designation + ", pancard=" + pancard + ", emailId=" + emailId + ", salary="
+				+ salary + ", bankDetails=" + bankDetails + ", getAssociateId()=" + getAssociateId()
+				+ ", getYearlyInvestmentUnder80C()=" + getYearlyInvestmentUnder80C() + ", getFirstName()="
+				+ getFirstName() + ", getLastName()=" + getLastName() + ", getDepartment()=" + getDepartment()
+				+ ", getDesignation()=" + getDesignation() + ", getPancard()=" + getPancard() + ", getEmailId()="
+				+ getEmailId() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()="
+				+ super.toString() + "]";
 	}	
 }

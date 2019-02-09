@@ -12,16 +12,15 @@ import com.cg.payroll.services.PayrollServicesImpl;
 public class MainClass {
 	public static void main(String[] args) {
 			PayrollServices services = new PayrollServicesImpl();
-			Scanner sc = new Scanner(System.in);	
-			System.out.println("******************PAYROLL SYSTEM********************");
+			Scanner sc = new Scanner(System.in);			
+			System.out.println("******************Payroll********************");
 			char ch='y';
 			while(ch=='y'||ch=='Y') {
-				System.out.println("Enter your choice:\n1. Save Associate\n2. Calculate Net Salary\n3. Get Associate Details"
-						+ "\n4. Get All Associate Details");
+				System.out.println("Enter your choice:\n1. Save Associate\n2. Get Associate Details\n3. Get All Associate Details"
+						+ "\n4.Calculate Net Salary");
 				int choice = sc.nextInt();
 				switch (choice) {
 				case 1:
-					System.out.println("***********ENTER DETAILS***********\n");
 					System.out.println("Enter First name of associate: ");
 					String firstName = sc.next();
 					System.out.println("Enter Last name of associate: ");
@@ -51,21 +50,21 @@ public class MainClass {
 					int associateId=services.acceptAssociateDetails(firstName, lastName, emailId, department, designation, pancard, yearlyInvestmentUnder80C, basicSalary, epf, companyPf,accountNumber, bankName, ifscCode);
 					System.out.println("Associate Id: "+associateId);
 					break;
-				case 2:
-					System.out.println("Enter associate id to calculate net salary: ");
-					int id = sc.nextInt();
-					int netSalary = services.calculateNetSalary(id);
-					System.out.println("Net Salary = "+netSalary);
-					break;
-				case 3: 
+				case 2: 
 					System.out.println("Enter associate id to find details: ");
-					id = sc.nextInt();
+					int id = sc.nextInt();
 					Associate associateDetails = services.getAssociateDetails(id);
 					System.out.println(associateDetails);
 					break;
-				case 4:
+				case 3:
 					List<Associate> allAssociateDetails = services.getAllAssociatesDetails();		
 					System.out.println(allAssociateDetails);
+					break;
+				case 4:
+					System.out.println("Enter associate id to calculate net salary: ");
+					id = sc.nextInt();
+					int netSalary = services.calculateNetSalary(id);
+					System.out.println("Net Salary = "+netSalary);
 					break;
 			default:
 				System.out.println("Please enter a valid number");

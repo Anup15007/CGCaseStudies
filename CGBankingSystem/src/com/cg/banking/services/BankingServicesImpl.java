@@ -67,7 +67,6 @@ public class BankingServicesImpl implements BankingServices{
 	@Override
 	public float withdrawAmount(long accountNo, float amount, int pinNumber) throws InsufficientAmountException,
 	AccountNotFoundException, InvalidPinNumberException, BankingServicesDownException, AccountBlockedException {
-		int count=0;
 		Account account = getAccountDetails(accountNo);
 		if(account.getAccountStatus().equalsIgnoreCase("ACTIVE")){
 			for(int i =0;i<2;i++){
@@ -96,7 +95,7 @@ public class BankingServicesImpl implements BankingServices{
 			throws InsufficientAmountException, AccountNotFoundException, InvalidPinNumberException,
 			BankingServicesDownException, AccountBlockedException {
 		float balAmount = withdrawAmount(accountNoFrom, transferAmount, pinNumber);
-		float amountAfterDeposit = depositAmount(accountNoTo, transferAmount);
+		depositAmount(accountNoTo, transferAmount);
 		if(balAmount!=0.00f) 
 			return true;
 		else

@@ -4,14 +4,20 @@ public class Student {
 	int studentId,stuClass;
 	String studentName;
 	String address;
-	public Student() {}
-	public Student(int studentId, int class1, String studentName, String address) {
+	public Student() {}	
+	public Student(int stuClass, String studentName, String address) {
+		this.stuClass = stuClass;
+		this.studentName = studentName;
+		this.address = address;
+	}	
+	public Student(int studentId, int stuClass, String studentName, String address) {
 		super();
 		this.studentId = studentId;
-		stuClass = class1;
+		this.stuClass = stuClass;
 		this.studentName = studentName;
 		this.address = address;
 	}
+
 	public int getStudentId() {
 		return studentId;
 	}
@@ -21,8 +27,8 @@ public class Student {
 	public int getstuClass(){
 		return stuClass;
 	}
-	public void setstuClass(int class1) {
-		stuClass = class1;
+	public void setstuClass(int stuClass) {
+		this.stuClass = stuClass;
 	}
 	public String getStudentName() {
 		return studentName;
@@ -74,10 +80,6 @@ public class Student {
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", stuClass=" + stuClass + ", studentName=" + studentName
-				+ ", address=" + address + ", getStudentId()=" + getStudentId() + ", getstuClass()=" + getstuClass()
-				+ ", getStudentName()=" + getStudentName() + ", getAddress()=" + getAddress() + ", hashCode()="
-				+ hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString() + "]";
-	};
-	
-	
+				+ ", address=" + address + "]";
+	}
 }

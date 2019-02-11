@@ -30,7 +30,7 @@ public static PayrollServices services;
 	
 	@Before
 	public void setUpTestData() {
-		Associate associate1 = new Associate(101, 78000, "Kuldeep", "Dangwal", "SE", "Analyst", "KDTY654CG", "dangwalk123@capgemini.com",
+		Associate associate1 = new Associate(101, 78000, "Anup", "Banerjee", "SE", "Analyst", "KDTY654CG", "anup123@capgemini.com",
 				new Salary(35000,1800,1800), new BankDetails(54321,"Citi","citi0001"));
 		Associate associate2 = new Associate(102, 87654, "Patit", "Pawan", "SE", "Analyst", "PPTY6754CG", "patitpawan123@capgemini.com",
 				new Salary(45000,2800,2800), new BankDetails(54654,"HDFC","hdfc0005"));
@@ -54,7 +54,7 @@ public static PayrollServices services;
 		Assert.assertEquals(expectedAssociate, actualAssociate);
 	}
 	
-	@Test(expected=AssociateDetailsNotFoundException.class)
+	@Test
 	public void testAcceptAssociateDetailsForValidData(){
 		int expectedId = 103;
 		int actualId = services.acceptAssociateDetails("Sonu", "Sharma", "sonusharma@gmail.com", "ATC", "Clerk", "SISU9876DC", 78906, 23456, 1234, 2134, 987650, "Citi", "citi00001");
@@ -68,14 +68,14 @@ public static PayrollServices services;
 	
 	@Test
 	public void testCalculateNetSalaryForValidAssociateId() throws AssociateDetailsNotFoundException{
-		int expectedNetSalary = 0;
+		int expectedNetSalary = 75950;
 		int actualNetSalary = services.calculateNetSalary(102);
 		Assert.assertEquals(expectedNetSalary, actualNetSalary);
 	}
 	
 	@Test
 	public void testGetAllAssociatesDetails() {
-		Associate associate1 = new Associate(101, 78000, "Kuldeep", "Dangwal", "SE", "Analyst", "KDTY654CG", "dangwalk123@capgemini.com",
+		Associate associate1 = new Associate(101, 78000, "Anup", "Banerjee", "SE", "Analyst", "KDTY654CG", "anup123@capgemini.com",
 				new Salary(35000,1800,1800), new BankDetails(54321,"Citi","citi0001"));
 		Associate associate2 = new Associate(102, 87654, "Patit", "Pawan", "SE", "Analyst", "PPTY6754CG", "patitpawan123@capgemini.com",
 				new Salary(45000,2800,2800), new BankDetails(54654,"HDFC","hdfc0005"));
@@ -83,7 +83,7 @@ public static PayrollServices services;
 		ArrayList<Associate> expectedAssociateList = new ArrayList<Associate>();
 		expectedAssociateList.add(associate1);
 		expectedAssociateList.add(associate2);
-		ArrayList<Associate>actualAssociateList = new ArrayList<Associate>();
+		ArrayList<Associate>actualAssociateList = (ArrayList<Associate>) services.getAllAssociatesDetails();
 		Assert.assertEquals(expectedAssociateList, actualAssociateList);
 	}
 	

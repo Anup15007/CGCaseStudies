@@ -4,13 +4,15 @@ import java.util.List;
 
 import com.cg.studentadmission.beans.Student;
 import com.cg.studentadmission.daoservices.StudentDAO;
+import com.cg.studentadmission.daoservices.StudentDAOImpl;
 import com.cg.studentadmission.exceptions.StudentDetailsNotFoundException;
 
 public class StudentServicesImpl implements StudentServices{
-	private StudentDAO studentDao;
+	private StudentDAO studentDao = new StudentDAOImpl();
 	@Override
-	public int acceptStudentDetails(int studentId, int stuClass, String studentName, String address) {
-		Student student = new Student( studentId, stuClass,  studentName,  address);
+	public int acceptStudentDetails( int stuClass, String studentName, String address) {
+		Student student = new Student(  stuClass,  studentName,  address);
+		
 		student = studentDao.save(student);
 		return student.getStudentId();
 	}
